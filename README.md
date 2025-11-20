@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements a multi-threaded **Producer–Consumer** pipeline in Java. It fulfills the **"First Choice" (الاختيار الأول)** requirement of the Thread Synchronization assignment.
+This project implements a multi-threaded **Producer–Consumer** pipeline in Java. It fulfills the **"First Choice"** requirement of the Thread Synchronization assignment.
 
 The application simulates a concurrent file-processing workflow where data is read from an input file, processed by multiple consumer threads in parallel, and then written to an output file by a single writer thread. The architecture ensures thread safety and efficient data handling using blocking queues.
 
@@ -71,3 +71,9 @@ src/main/java/org/example/
 Input Lines:  200
 Output Lines: 200
 SUCCESS: No data lost! Line counts match.
+
+
+
+## Optional Question:
+
+To verify that a learner is genuinely using AI as a supportive tool, instructors should conduct live assessments where the student must explain key design choices and predict system behavior under various "what-if" scenarios. Requiring on-the-fly code modifications or a review of their prompt history further verifies that they can critically evaluate the AI's output and independently navigate the codebase, rather than merely copying the solution.
