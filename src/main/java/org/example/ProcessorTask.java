@@ -24,6 +24,7 @@ class ProcessorTask implements Runnable {
 
                 String processedLine = new StringBuilder(line).reverse().toString().toUpperCase();
 
+                System.out.println(Thread.currentThread().getName() + " processed: " + line.substring(0, Math.min(line.length(), 10)) + "...");
                 outputQueue.put(processedLine);
             }
         } catch (InterruptedException e) {
