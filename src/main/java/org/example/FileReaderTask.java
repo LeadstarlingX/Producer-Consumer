@@ -27,7 +27,10 @@ class FileReaderTask implements Runnable {
             }
 
             // Finished reading. Send a Poison Pill for EACH processor thread
-
+            for (int i = 0; i < numberOfConsumers; i++) {
+                outputQueue.put(FileProcessingApp.POISON_PILL);
+            }
+            System.out.println("Producer: Finished reading file.");
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
