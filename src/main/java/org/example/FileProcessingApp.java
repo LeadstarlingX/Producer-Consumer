@@ -34,7 +34,7 @@ public class FileProcessingApp {
         for (int i = 0; i < numberOfProcessors; i++) {
             new Thread(new ProcessorTask(queue1, queue2)).start();
         }
-
+        
         // C. Writer
         Thread writer = new Thread(new FileWriterTask(queue2, "output.txt", numberOfProcessors));
         writer.start();
