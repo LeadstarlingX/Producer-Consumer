@@ -7,9 +7,9 @@ import java.util.concurrent.BlockingQueue;
 
 
 class FileReaderTask implements Runnable {
-    private BlockingQueue<String> outputQueue;
-    private String fileName;
-    private int numberOfConsumers;
+    private final BlockingQueue<String> outputQueue;
+    private final String fileName;
+    private final int numberOfConsumers;
 
     public FileReaderTask(BlockingQueue<String> queue, String file, int consumers) {
         this.outputQueue = queue;
@@ -22,11 +22,9 @@ class FileReaderTask implements Runnable {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Put line in queue (waits if queue is full)
                 outputQueue.put(line);
             }
 
-            // Finished reading. Send a Poison Pill for EACH processor thread
             for (int i = 0; i < numberOfConsumers; i++) {
                 outputQueue.put(FileProcessingApp.POISON_PILL);
             }

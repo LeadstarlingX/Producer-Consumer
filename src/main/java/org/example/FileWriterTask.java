@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 
 class FileWriterTask implements Runnable {
-    private BlockingQueue<String> inputQueue;
-    private String fileName;
-    private int numberOfProcessors;
+    private final BlockingQueue<String> inputQueue;
+    private final String fileName;
+    private final int numberOfProcessors;
 
     public FileWriterTask(BlockingQueue<String> queue, String file, int totalProcessors) {
         this.inputQueue = queue;
@@ -24,8 +24,8 @@ class FileWriterTask implements Runnable {
             while (true) {
                 String line = inputQueue.take();
 
-                // Check for stop signal
-                if (line == FileProcessingApp.POISON_PILL) {
+
+                if (line.equals(FileProcessingApp.POISON_PILL)) {
                     finishedProcessors++;
                     // Only stop writing when ALL processors have sent their termination signal
                     if (finishedProcessors == numberOfProcessors) {
